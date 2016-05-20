@@ -1,5 +1,5 @@
 ---
-- hosts: minecraft
+- hosts: all
   remote_user: mineadmin
 
   tasks:
