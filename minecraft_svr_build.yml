@@ -1,0 +1,33 @@
+---
+- name: Build Minecraft Server!
+  hosts: all
+  sudo: yes
+  remote_user: mineadmin
+
+  tasks:
+
+  - name: Install openjdk-7-jdk
+    apt: pkg=openjdk-7-jre state=installed update_cache=true
+    
+  - name: Install screen
+    apt: pkg=screen state=installed update_cache=true
+
+  - name: Create minecraft dir
+    file: state=directory path=/opt/minecraft
+
+  - name: Download minecraft (1.9)
+    command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9/minecraft_server.1.9.jar chdir=/opt/minecraft creates=/opt/minecraft/minecraft_server.jar
+
+  - name: Run minecraft to create eula.txt
+  
+  - name: Run minecraft to create eula.txt
+    command: screen -S minecraft -d -m java -Xmx512M -Xms512M -jar /opt/minecraft/minecraft_server.jar
+
+  - name: chown eula.txt
+    command: chown mineadmin:mineadmin /home/mineadmin/eula.txt
+
+  - name: Fix the eula.txt agreement
+    command: sudo sed s/false/true/ </home/mineadmin/eula.txt >/home/mineadmin/eula.txt
+
+  - name: Run minecraft
+    command: screen -S minecraft -d -m java -Xmx512M -Xms512M -jar /opt/minecraft/minecraft_server.jar
