@@ -18,6 +18,11 @@
   - name: Download minecraft (1.9)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9/minecraft_server.1.9.jar chdir=/opt/minecraft creates=/opt/minecraft/minecraft_server.jar
 
+  - name: Run minecraft to create eula.txt
+  
+  - name: Run minecraft to create eula.txt
+    command: screen -S minecraft -d -m java -Xmx512M -Xms512M -jar /opt/minecraft/minecraft_server.jar
+
   - name: chown eula.txt
     command: chown mineadmin:mineadmin /home/mineadmin/eula.txt
 
