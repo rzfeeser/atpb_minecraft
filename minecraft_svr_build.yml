@@ -1,6 +1,7 @@
 ---
 - name: Build Minecraft Server!
   hosts: all
+  sudo: yes
   remote_user: mineadmin
 
   tasks:
