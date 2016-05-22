@@ -15,4 +15,4 @@
     apt: name=git state=present
     
   - name: Install fail2ban
-    apt: name=fail2ban
+    apt: name=fail2ban state=present
