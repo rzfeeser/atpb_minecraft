@@ -2,7 +2,7 @@
 - name: Prepare the Minecraft Server!
   hosts: all
   sudo: yes
-  remote_user: mineadmin
+  remote_user: minecraft
 
   tasks:
 
@@ -14,18 +14,11 @@
     
   - name: Install git
     apt: name=git state=present
-    
-  - name: Create new user without root to run minecraft
-    user: name=minecraft comment="Run minecraft only"
 
-- name: Run the server
-  hosts: all
-  remote_user: minecraft
-  
-  tasks:
-  
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=/opt/minecraft creates=/opt/minecraft/minecraft_server.jar
-
+    sudo: no
+    
   - name: Run minecraft
     command: screen -S minecraft -d -m java -Xmx512M -Xms512M -jar /opt/minecraft/minecraft_server.jar
+    sudo: no
