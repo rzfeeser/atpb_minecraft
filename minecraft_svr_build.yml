@@ -16,7 +16,7 @@
     apt: name=git state=present
     
   - name: Create new user without root to run minecraft
-    user: name=minecraft comment="Run minecraft only" group=minecraft
+    user: name=minecraft comment="Run minecraft only"
 
 - name: Run the server
   hosts: all
