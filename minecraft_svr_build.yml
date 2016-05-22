@@ -18,7 +18,6 @@
   - name: Create new user without root to run minecraft
     user: name=minecraft comment="Run minecraft only" group=minecraft
 
----
 - name: Run the server
   hosts: all
   remote_user: minecraft
