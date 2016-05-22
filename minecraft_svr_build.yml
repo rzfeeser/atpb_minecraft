@@ -2,7 +2,6 @@
 - name: Prepare the Minecraft Server!
   hosts: all
   sudo: yes
-  remote_user: minecraft
 
   tasks:
 
