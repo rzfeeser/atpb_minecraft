@@ -13,7 +13,7 @@
     apt: pkg=screen state=installed update_cache=true
     
   - name: Install git
-    apt: pkg=git state=installed update_chase=true
+    apt: name=git state=present
     
   - name: Create new user without root to run minecraft
     user: name=minecraft comment="Run minecraft only" group=minecraft
