@@ -1,3 +1,9 @@
+---
+- name: Prepare the Minecraft Server!
+  hosts: all
+  sudo: no
+
+  tasks:
 
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=/opt/minecraft creates=/opt/minecraft/minecraft_server.jar
