@@ -16,6 +16,9 @@
     
   - name: Install fail2ban
     apt: name=fail2ban state=present
+    
+  - name: Pause
+    pause: seconds=2
 
   - name: Copy fail2ban
     copy: src=/etc/fail2ban/jail.conf dest=/etc/fail2ban/jail.local
