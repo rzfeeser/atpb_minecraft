@@ -14,7 +14,6 @@
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
     
-  - name: Fire and foreget Minecraft
+  - name: Run minecraft in screen
     command: java -Xmx512M -Xms512M -jar ~/minecraft/minecraft_server.jar
-    async: 15
     poll: 0
