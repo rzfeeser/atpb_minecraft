@@ -9,7 +9,7 @@
     file: path=~/minecraft state=directory
   
   - name: Get eula.txt set to true
-    command: curl https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt > eula.txt
+    get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/eula.txt
     
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
