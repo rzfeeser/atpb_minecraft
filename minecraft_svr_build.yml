@@ -21,7 +21,7 @@
     pause: seconds=2
 
   - name: Copy fail2ban
-    copy: src=/etc/fail2ban/jail.conf dest=/etc/fail2ban/jail.local
+    copy: src=/etc/fail2ban/jail.conf dest=/etc/fail2ban/jail.local owner=root group=root mode=0644
 
   - name: Update fail2ban policy
     lineinfile: dest=/etc/fail2ban/jail.conf regexp=^bantime line='bantime = 7200'
