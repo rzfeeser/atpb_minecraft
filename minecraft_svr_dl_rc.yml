@@ -8,6 +8,9 @@
   - name: Make minecraft directory
     file: path=~/minecraft state=directory
   
+  - name: Get eula.txt set to true
+    command: git archive --remote=https://github.com/rzfeeser/atpb_minecraft.git HEAD ealu.txt > ealu.txt
+    
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
     
