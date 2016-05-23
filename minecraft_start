@@ -1,0 +1,4 @@
+#!/bin/bash
+# Start the minecraft server
+
+java -Xmx512M -Xms512M -jar ~/minecraft/minecraft_server.jar
