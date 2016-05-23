@@ -16,4 +16,5 @@
     
   - name: Fire and forget minecraft
     command: java -Xmx512M -Xms512M -jar ~/minecraft/minecraft_server.jar
+    async: 15
     poll: 0
