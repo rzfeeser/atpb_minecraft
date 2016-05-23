@@ -21,4 +21,4 @@
     copy: src=/etc/fail2ban/jail.conf dest=/etc/fail2ban/jail.local owner=root group=root mode=0644
 
   - name: Update fail2ban policy
-    replace: dest=/etc/fail2ban/fail2ban.conf regex=`bantime = 600` replace=`bantime = 7200`
+    replace: dest=/etc/fail2ban/fail2ban.conf regex='bantime = 600' replace='bantime = 7200'
