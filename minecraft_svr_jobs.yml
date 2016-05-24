@@ -14,3 +14,4 @@
 
   - name: Update the Minecrat Server - Packages to latest version
     apt: upgrade=dist
+ 
