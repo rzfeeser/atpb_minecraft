@@ -5,8 +5,12 @@
 
   tasks:
   
-  - name: Signal the Minecraft Server is going down for maintence
+  - name: Signal the Minecraft Server is going through a backup in 5 minutes
+    command: screen -r minecraft | /say Reticulating splines in 5 minutes.
   
+  - name: Reticulating splines.
+    command: screen -r minecraft | /say Reticulating splines complete. The World has been saved.
+
   - name: Backup the Minecraft Server
 
   - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
