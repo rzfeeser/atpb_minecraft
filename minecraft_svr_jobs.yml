@@ -10,4 +10,12 @@
 
   - name: Update the Minecrat Server - Packages to latest version
     apt: upgrade=dist
+    
+  - name: Reboot server
+    command: /sbin/reboot
+
+
+  - name: Wait for the server to finish rebooting
+    sudo: no
+    local_action: wait_for host="{{ inventory_hostname }}" search_regex=OpenSSH port=22 timeout=300
  
