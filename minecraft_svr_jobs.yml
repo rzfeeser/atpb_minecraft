@@ -10,7 +10,7 @@
   - name: Backup the Minecraft Server
 
   - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
-      apt: update_cache=yes cache_valid_time=3600
+    apt: update_cache=yes cache_valid_time=3600
 
   - name: Update the Minecrat Server - Packages to latest version
-      apt: upgrade=dist
+    apt: upgrade=dist
