@@ -21,4 +21,4 @@
     copy: src=/etc/fail2ban/jail.conf dest=/etc/fail2ban/jail.local remote_src=true
 
   - name: Update fail2ban policy
-    lineinfile: dest=/etc/fail2ban/jail.local regexp="^bantime  = 600$" line="bantime = 10000"
+    lineinfile: dest=/etc/fail2ban/jail.local regexp="^bantime  = 600$" line="bantime  = 10000"
