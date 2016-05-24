@@ -16,3 +16,9 @@
     
   - name: Fire and forget minecraft
     command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
+    
+  - name: Signal the Minecraft Server is going through a backup in 5 minutes
+    command: "screen -r minecraft | /say Reticulating splines in 5 minutes."
+  
+  - name: Reticulating splines.
+    command: "screen -r minecraft | /say Reticulating splines complete. The World has been saved."
