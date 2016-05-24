@@ -1,5 +1,5 @@
 ---
-- name: Regular jobs to be performed on Minecraft Server
+- name: Regular maintenance jobs to be performed on Minecraft Server
   hosts: all
   sudo: yes
 
