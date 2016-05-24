@@ -22,3 +22,6 @@
 
   - name: Update fail2ban policy
     lineinfile: dest=/etc/fail2ban/jail.local regexp="^bantime  = 600$" line="bantime  = 10000"
+    
+  - name: Restart fail2ban
+    service: name=fail2ban state=restarted
