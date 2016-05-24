@@ -4,6 +4,12 @@
   sudo: yes
 
   tasks:
+  
+  - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+    apt: update_cache=yes cache_valid_time=3600
+
+  - name: Update the Minecrat Server - Packages to latest version
+    apt: upgrade=dist
 
   - name: Install openjdk-7-jdk
     apt: pkg=openjdk-7-jre state=installed update_cache=true
