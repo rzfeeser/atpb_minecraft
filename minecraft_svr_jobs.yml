@@ -11,7 +11,7 @@
   - name: Reticulating splines.
     command: screen -r minecraft | /say Reticulating splines complete. The World has been saved.
 
-  - name: Backup the Minecraft Server
+##  - name: Backup the Minecraft Server
 
   - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
     apt: update_cache=yes cache_valid_time=3600
