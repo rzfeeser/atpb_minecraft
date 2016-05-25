@@ -21,5 +21,17 @@
       - name: No pgrep!? Start the Minecraft Server!
         command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
 
-  - name: Signal the Minecraft Server is going through a backup in 5 minutes
+  - name: Signal the Minecraft Sever is going through a save cycle, and perform a live "safe" save.
     command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
+    
+  ## Build the tar file max once per day
+#  - name: Tar up the world!
+#    command: (date +"%m-%d-%y")
+    
+    ## Fetch the tar
+    
+    ## Remove the tar
+
+  ## You've been saved
+  - name: Signal the Minecraft Sever has been backed up
+    command: "screen -S minecraft -X stuff '/say Entaro Adun. Daily backups have been completed.'"
