@@ -13,17 +13,14 @@
     
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
-    
-  - name: Populate launcher
-    command: pgrep minecraft
-  
-  - name: Set launcher
-    stat: path=~/launcher.txt
-    register: launcher
-  
-  - name: Start Minecraft if it is not already up
-    command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
-    when: launcher.stat.exists == False
-    
+
+  - block:
+      - debug: msg='i execute normally'
+        notify: run me even after an error
+      - command: pgrep minecraft
+    rescue:
+      - name: make sure all handlers run
+        command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
+
   - name: Signal the Minecraft Server is going through a backup in 5 minutes
     command: "screen -S minecraft -X stuff '/say Reticulating splines in 5 minutes.'"
