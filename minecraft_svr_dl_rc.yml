@@ -15,11 +15,10 @@
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
 
   - block:
-      - debug: msg='i execute normally'
-        notify: run me even after an error
-      - command: pgrep java
+      - name: pgrep to determine if java is running!
+        command: pgrep java
     rescue:
-      - name: make sure all handlers run
+      - name: No pgrep!? Start the Minecraft Server!
         command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
 
   - name: Signal the Minecraft Server is going through a backup in 5 minutes
