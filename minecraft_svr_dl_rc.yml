@@ -22,4 +22,4 @@
         command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
 
   - name: Signal the Minecraft Server is going through a backup in 5 minutes
-    command: "screen -S minecraft -X stuff '/say Reticulating splines in 5 minutes. \n'"
+    command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
