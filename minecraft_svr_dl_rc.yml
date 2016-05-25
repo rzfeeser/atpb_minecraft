@@ -15,7 +15,7 @@
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
     
   - name: Populate launcher
-    command: pgrep minecraft > launcher.txt
+    shell: pgrep minecraft > launcher.txt
   
   - name: Set launcher
     stat: path=~/launcher.txt
