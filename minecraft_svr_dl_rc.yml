@@ -17,7 +17,7 @@
   - block:
       - debug: msg='i execute normally'
         notify: run me even after an error
-      - command: pgrep minecraft
+      - command: pgrep java
     rescue:
       - name: make sure all handlers run
         command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
