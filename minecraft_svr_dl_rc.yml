@@ -23,10 +23,13 @@
 
   - name: Signal the Minecraft Sever is going through a save cycle, and perform a live "safe" save.
     command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
-    
+  
+  - name: Make minecraft_backup directory
+    file: path=~/minecraft_backup state=directory  
+
   ## Build the tar file max once per day
-#  - name: Tar up the world!
-#    command: (date +"%m-%d-%y")
+  - name: Tar up the world!
+    command: tar -cvf ~/minecraft_backup/(date +"%m-%d-%y")backup.tar ~/minecraft
     
     ## Fetch the tar
     
