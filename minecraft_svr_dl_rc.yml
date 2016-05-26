@@ -30,11 +30,12 @@
   ## Build the tar file max once per day & backup to NAS & delete
   - block:
       - name: Tar up the world with the current date
-        shell: "tar -cvf ~/minecraft_backup/minecraft_backup$(date +%Y%m%d).tar /home/minecraft/"
-        fetch: src=~/minecraft_backup/minecraft_backup dest=~/minecraft_tmp/ flat=yes
+          - shell: "tar -cvf ~/minecraft_backup/minecraft_backup$(date +%Y%m%d).tar /home/minecraft/"
+          - fetch: src=~/minecraft_backup/minecraft_backup dest=~/minecraft_tmp/ flat=yes
     rescue:
       - name: The server needs attention
         debug: msg="Danger! Something regarding the backup of the Minecraft Server has failed!"
+  
 
   ## You've been saved
   - name: Signal the Minecraft Sever has been backed up
