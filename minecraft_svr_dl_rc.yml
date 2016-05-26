@@ -28,13 +28,13 @@
     file: path=~/minecraft_backup state=directory  
 
   ## Build the tar file max once per day
-  - name: Tar up the world!
-    command: tar -cvf ~/minecraft_backup/(date +"%m-%d-%y")backup.tar ~/minecraft
-    
+  - name: Tar up the world with the current date
+    command: "tar -cvf ~/minecraft_backup/"$(date +%Y%m%d)"minecraft_backup.tar /home/minecraft/" creates=
+      
     ## Fetch the tar
     
     ## Remove the tar
 
   ## You've been saved
   - name: Signal the Minecraft Sever has been backed up
-    command: "screen -S minecraft -X stuff '/say Entaro Adun. Daily backups have been completed.'"
+    command: "screen -S minecraft -X stuff '/say Backups have been completed. Entaro Adun.'"
