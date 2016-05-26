@@ -21,17 +21,22 @@
       - name: No pgrep!? Start the Minecraft Server!
         command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
 
-  - name: Signal the Minecraft Sever is going through a save cycle, and perform a live "safe" save.
-    command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
-  
   - name: Make minecraft_backup directory
     file: path=~/minecraft_backup state=directory  
 
-  ## Build the tar file
-  - name: Tar up the world with the current date & move to NAS storage
-    command: "tar -cvf ~/minecraft_backup/minecraft_backup"$(date +%Y%m%d)".tar /home/minecraft/"
-    
-  ## Fetch the tar
+  - name: Signal the Minecraft Sever is going through a save cycle, and perform a live "safe" save.
+    command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
+
+  ## Build the tar file max once per day & backup to NAS & delete
+  - block:
+      - name: Tar up the world with the current date
+        command: "tar -cvf ~/minecraft_backup/minecraft_backup"$(date +%Y%m%d)".tar /home/minecraft/"
+        fetch: src=~/minecraft_backup/minecraft_backup dest=~/minecraft_tmp/ flat=yes
+
+        
+  - rescue:
+      - name: The server needs attention
+        debug: msg="Danger! Something regarding the backup of the Minecraft Server has failed!"
     
     ## Remove the tar
 
