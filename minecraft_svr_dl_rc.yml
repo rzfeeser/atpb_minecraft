@@ -24,7 +24,7 @@
   - name: Make minecraft_backup directory
     file: path=~/minecraft_backup state=directory  
 
-  - name: Signal the Minecraft Sever is going through a save cycle, and perform a live "safe" save.
+  - name: Signal the Minecraft Sever is going through a save cycle, and will perform a live "safe" save.
     command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
 
   ## Build the tar file max once per day & backup to NAS & delete
