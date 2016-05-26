@@ -35,8 +35,6 @@
     rescue:
       - name: The server needs attention
         debug: msg="Danger! Something regarding the backup of the Minecraft Server has failed!"
-    
-  ## Remove the tar
 
   ## You've been saved
   - name: Signal the Minecraft Sever has been backed up
