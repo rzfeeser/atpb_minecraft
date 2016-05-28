@@ -35,8 +35,12 @@
       - name: The server needs attention
         debug: msg="Danger! Something regarding the backup of the Minecraft Server has failed!"
   
+  - name: set date
+    shell: date +%Y%m%d
+    register: backupdate
+  
   - name: Fetch the backup
-    fetch: src=~/minecraft_backup/minecraft_backup.*.tar$ dest=~/minecraft_tmp/ flat=yes
+    fetch: src=~/minecraft_backup/minecraft_backup*.tar$ dest=~/minecraft_tmp/ flat=yes
 
   ## You've been saved
   - name: Signal the Minecraft Sever has been backed up
