@@ -36,7 +36,7 @@
         debug: msg="Danger! Something regarding the backup of the Minecraft Server has failed!"
   
   - name: set date
-    shell: date +%Y%m%d
+    shell: "date +%Y%m%d"
     register: backupdate
   
   - name: Fetch the backup
