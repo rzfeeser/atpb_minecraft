@@ -40,7 +40,7 @@
     register: backupdate
   
   - name: Fetch the backup
-    fetch: src=~/minecraft_backup/minecraft_backup*.tar$ dest=~/minecraft_tmp/ flat=yes
+    fetch: src="~/minecraft_backup/minecraft_backup*" dest="~/minecraft_tmp/" flat=yes
 
   ## You've been saved
   - name: Signal the Minecraft Sever has been backed up
