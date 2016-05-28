@@ -5,12 +5,15 @@
 
   tasks:
 
+  ## Ensure the local directory is available for Minecraft Server
   - name: Make minecraft directory
     file: path=~/minecraft state=directory
   
+  ## Ensure the License Agreement is available for Minecraft Server
   - name: Get eula.txt set to true
     get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/eula.txt
     
+  ## Ensure the the latest version of Minecraft Server is present
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
 
@@ -35,13 +38,15 @@
       - name: The server needs attention
         debug: msg="Danger! Something regarding the backup of the Minecraft Server has failed!"
   
+  ## Sets backupdate with the date formatted as YEARMMDD (i.e 20160105 )
   - name: set date
     shell: "date +%Y%m%d"
     register: backupdate
   
+  ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
   - name: Fetch the backup
     fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=~/minecraft_tmp/ flat=yes
 
-  ## You've been saved
+  ## Let the world know that the world has been saved!
   - name: Signal the Minecraft Sever has been backed up
     command: "screen -S minecraft -X stuff '/say Backups have been completed. Entaro Adun.'"
