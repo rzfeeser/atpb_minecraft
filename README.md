@@ -1,5 +1,5 @@
 ## Ansible Tower Minecraft Server Play Books
-##
+## Project Status: Unstable (Ultra pre-Alpha)
 ##### My goal is to use a combination of Ansible Tower, GitHub, and an Ubuntu 14.04 snapshot to teach myself how to:
   - Control Ansible Tower
   - Write YAML syntax
