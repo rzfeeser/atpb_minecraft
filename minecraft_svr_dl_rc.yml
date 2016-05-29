@@ -40,13 +40,6 @@
   - name: Pause for 1 minute
     pause: minutes=1
   
-  ## Saves the Minecraft Server's local state. Shuts off auto-save to prevent file curruption.
-  - name: Make a save of the Minecraft Server
-    command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"  
-  
-  - name: Pause for 1 minute
-    pause: minutes=1
-    
   ## STOP the Minecraft Server
   - name: Turn off the server so the tar file can be built without errors
     command: "screen -S minecraft -X stuff '/stop \n'"  
