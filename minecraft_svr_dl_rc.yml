@@ -40,7 +40,7 @@
   - name: Pause for 1 minute
     pause: minutes=1
   
-  ## STOP the Minecraft Server
+  ## STOP the Minecraft Server -- this also forces Screen to quit
   - name: Turn off the server so the tar file can be built without errors
     command: "screen -S minecraft -X stuff '/stop \n'"  
   
