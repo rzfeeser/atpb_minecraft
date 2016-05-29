@@ -5,6 +5,8 @@
 
   tasks:
 
+  ## This part should only run the first time the Minecraft Server is set up
+
   ## Ensure the local directory is available for Minecraft Server
   - name: Make minecraft directory
     file: path=~/minecraft state=directory
@@ -17,14 +19,37 @@
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
 
+  ## This part ensures the server is running and backed up properly
+  
+  ## Ensure the world is running
+  - block:
+      - name: pgrep will determine if java (Minecraft Server) is running
+        command: pgrep java
+    rescue:
+      - name: No pgrep!? Start the Minecraft Server!
+        command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
+
+  ## Ensure that a backup directory exists on the Minecraft Server 
   - name: Make minecraft_backup directory
     file: path=~/minecraft_backup state=directory  
 
-  - name: Signal the Minecraft Sever is going through a save cycle, and will perform a live "safe" save.
-    command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
-    
-  - name: Turn off the server so the tar file can be built without errors
+  ## Tell players that the world is about to go through a backup & restart
+  - name: Signal the Minecraft Sever is about to go through a save cycle, and will perform a live "safe" save.
+    command: "screen -S minecraft -X stuff '/say The world shall be made safe for another day. To do so. We must momentarily hault the world. Sever restart in 1 minute. \n /save-off \n /save-all \n /save-on \n'"
+  
+  - name: Pause for 1 minute
+    pause: minutes=1
+  
+  ## Saves the Minecraft Server's local state. Shuts off auto-save to prevent file curruption.
+  - name: Make a save of the Minecraft Server
     command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"  
+  
+  - name: Pause for 1 minute
+    pause: minutes=1
+    
+  ## STOP the Minecraft Server
+  - name: Turn off the server so the tar file can be built without errors
+    command: "screen -S minecraft -X stuff '/stop \n'"  
   
   ## Build the tar file max once per day & backup to NAS & delete
   - block:
@@ -42,8 +67,10 @@
   ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
   - name: Fetch the backup
     fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=/tmp/minecraft_backup{{ backupdate.stdout }}.tar flat=yes
-
- ## Ensure the world is running
+  
+  ## Remove the backup directory on the Minecraft Server
+  
+  ## Ensure the world is running
   - block:
       - name: pgrep will determine if java (Minecraft Server) is running
         command: pgrep java
@@ -53,4 +80,4 @@
 
   ## Let the world know that the world has been saved!
   - name: Signal the Minecraft Sever has been backed up
-    command: "screen -S minecraft -X stuff '/say Backups have been completed. Entaro Adun.'"
+    command: "screen -S minecraft -X stuff '/say Backups have been completed. Entaro Adun. \n'"
