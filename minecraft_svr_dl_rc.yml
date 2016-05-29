@@ -17,19 +17,15 @@
   - name: Download minecraft (1.9.4)
     command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
 
-  - block:
-      - name: pgrep will determine if java (Minecraft Server) is running
-        command: pgrep java
-    rescue:
-      - name: No pgrep!? Start the Minecraft Server!
-        command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
-
   - name: Make minecraft_backup directory
     file: path=~/minecraft_backup state=directory  
 
   - name: Signal the Minecraft Sever is going through a save cycle, and will perform a live "safe" save.
     command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"
-
+    
+  - name: Turn off the server so the tar file can be built without errors
+    command: "screen -S minecraft -X stuff '/say Reticulating splines. \n /save-off \n /save-all \n /save-on \n'"  
+  
   ## Build the tar file max once per day & backup to NAS & delete
   - block:
       - name: Tar up the world with the current date
@@ -45,7 +41,15 @@
   
   ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
   - name: Fetch the backup
-    fetch: dest=/tmp/minecraft_backup{{ backupdate.stdout }}.tar src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar flat=yes
+    fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=/tmp/minecraft_backup{{ backupdate.stdout }}.tar flat=yes
+
+ ## Ensure the world is running
+  - block:
+      - name: pgrep will determine if java (Minecraft Server) is running
+        command: pgrep java
+    rescue:
+      - name: No pgrep!? Start the Minecraft Server!
+        command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
 
   ## Let the world know that the world has been saved!
   - name: Signal the Minecraft Sever has been backed up
