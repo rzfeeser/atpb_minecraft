@@ -1,6 +1,6 @@
 ## Ansible Tower Minecraft Server Play Books
 ##
-#### My goal is to use a combination of Ansible Tower, GitHub, and an Ubuntu 14.04 LTS snapshot to teach myself how to:
+##### My goal is to use a combination of Ansible Tower, GitHub, and an Ubuntu 14.04 LTS snapshot to teach myself how to:
   - Control Ansible Tower
   - Write YAML syntax
   - Write Ansible Plays
