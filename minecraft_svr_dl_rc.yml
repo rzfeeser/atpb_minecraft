@@ -59,7 +59,7 @@
   
   ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
   - name: Fetch the backup
-    fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=/tmp/minecraft_backup{{ backupdate.stdout }}.tar flat=yes
+    fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=/tmp/minecraft_backup{{ backupdate.stdout }}.tar
   
   ## Remove the backup directory on the Minecraft Server
   
