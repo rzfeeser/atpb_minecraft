@@ -57,9 +57,17 @@
     shell: "date +%Y%m%d"
     register: backupdate
   
+  - name: test
+    shell: touch ~/minecraft_backup/fake.txt
+
   ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
   - name: Fetch the backup
-    fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=/tmp/ flat=yes owner=ender group=ender
+    fetch: src=~/minecraft_backup/fake.txt dest=/tmp/ flat=yes owner=ender group=ender
+
+  
+  ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
+##  - name: Fetch the backup
+##    fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=/tmp/ flat=yes owner=ender group=ender
   
   ## Remove the backup directory on the Minecraft Server
   
