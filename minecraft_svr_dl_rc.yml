@@ -61,8 +61,8 @@
     shell: touch ~/minecraft_backup/fake.txt
 
   ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
-  - name: Fetch the backup. now it is copy
-    copy: src=~/minecraft_backup/fake.txt dest=/tmp/ flat=yes owner=ender group=ender
+  - name: Fetch the backup
+    fetch: src=~/minecraft_backup/fake.txt dest=/tmp/ flat=yes owner=ender group=ender
 
   
   ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
