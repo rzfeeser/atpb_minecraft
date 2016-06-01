@@ -37,8 +37,8 @@
   - name: Signal the Minecraft Sever is about to go through a save cycle, and will perform a live "safe" save.
     command: "screen -S minecraft -X stuff '/say The world shall be made safe for another day. To do so. We must momentarily hault the world. Sever restart in 1 minute. \n /save-off \n /save-all \n /save-on \n'"
   
-#  - name: Pause for 1 minute
-#    pause: minutes=1
+  - name: Pause for 1 minute
+    pause: minutes=1
   
   ## STOP the Minecraft Server -- this also forces Screen to quit
   - name: Turn off the server so the tar file can be built without errors
