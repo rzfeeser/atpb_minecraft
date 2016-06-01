@@ -27,7 +27,7 @@
         command: pgrep java
     rescue:
       - name: No pgrep!? Start the Minecraft Server!
-        command: screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui
+        command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
 
   ## Ensure that a backup directory exists on the Minecraft Server 
   - name: Make minecraft_backup directory
