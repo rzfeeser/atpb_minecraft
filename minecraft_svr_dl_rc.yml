@@ -63,7 +63,7 @@
   
   ## Remove the backup directory on the Minecraft Server
   - name: Move the backups
-    shell: "mv ~/minecraft_backup/ /tmp/
+    shell: "mv ~/minecraft_backup/ /tmp/"
   
   ## Ensure the world is running
   - block:
