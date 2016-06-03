@@ -62,6 +62,8 @@
     fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=minecraft.iris.seven//tmp/ flat=yes
   
   ## Remove the backup directory on the Minecraft Server
+  - name: Move the backups
+    shell: "mv ~/minecraft_backup/ /tmp/
   
   ## Ensure the world is running
   - block:
