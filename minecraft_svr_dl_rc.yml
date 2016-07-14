@@ -5,7 +5,7 @@
 
   tasks:
 
-  ## This part should only run the first time the Minecraft Server is set up
+  ## This part should only run the first time the Minecraft Server is set up - edit
 
   ## Ensure the local directory is available for Minecraft Server
   - name: Make minecraft directory
