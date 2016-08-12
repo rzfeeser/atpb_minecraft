@@ -5,7 +5,7 @@
 
   tasks:
 
-  - name: Update the Minecrat Server - Packages to latest version
+  - name: Update the Minecrat Server - Packages to latest version control
     apt: upgrade=dist update_cache=yes
 
   - name: Install openjdk-7-jdk
