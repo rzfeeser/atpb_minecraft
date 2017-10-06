@@ -8,8 +8,9 @@
   - name: Update the Minecrat Server - Packages to latest version control
     apt: upgrade=dist update_cache=yes
 
-  - name: Install openjdk-7-jdk
-    apt: pkg=openjdk-7-jre state=installed update_cache=true
+   
+  - name: Install oracle-java9
+    apt: pkg=oracle-java9-installer state=installed update_cache=true
     
   - name: Install screen
     apt: name=screen state=present
