@@ -16,8 +16,8 @@
     get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/eula.txt
     
   ## Ensure the the latest version of Minecraft Server is present
-  - name: Download minecraft (1.10.2)
-    command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.10.2/minecraft_server.1.10.2.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
+  - name: Download minecraft (1.12.2)
+    command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
 
   ## This part ensures the server is running and backed up properly
   
