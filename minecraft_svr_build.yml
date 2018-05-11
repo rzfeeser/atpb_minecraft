@@ -7,7 +7,7 @@
   tasks:
 
   - name: install python3
-    raw: sudo apt install python3
+    raw: sudo apt install python
 
 - name: Prepare the Minecraft Server!
   hosts: all
