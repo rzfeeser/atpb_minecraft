@@ -3,6 +3,8 @@
   gather_facts: false
   hosts: all
   become: yes
+  
+  tasks:
 
   - name: install python3
     raw: sudo apt install python3
@@ -10,6 +12,8 @@
 - name: Prepare the Minecraft Server!
   hosts: all
   become: yes
+  
+  tasks:
 
   - name: Update the Minecrat Server - Packages to latest version control
     apt: upgrade=dist update_cache=yes
