@@ -24,10 +24,10 @@
       state: present
    
   - name: Install oracle-java8
-    apt: pkg=oracle-java8-installer state=installed update_cache=true
+    shell: "apt install oracle-java8-installer -y"
     
   - name: Set Oracle JDK8 as default with this package avail in webupd8team/java
-    apt: pkg=oracle-java8-set-default state=installed update_cache=true
+    shell: "apt install oracle-java8-set-default -y"
     
   - name: Install screen
     apt: name=screen state=present
