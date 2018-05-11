@@ -23,11 +23,11 @@
       repo: ppa:webupd8team/java
       state: present
    
-  - name: Install oracle-java9
-    apt: pkg=oracle-java9-installer state=installed update_cache=true
+  - name: Install oracle-java8
+    apt: pkg=oracle-java8-installer state=installed update_cache=true
     
-  - name: Set Oracle JDK9 as default with this package avail in webupd8team/java
-    apt: pkg=oracle-java9-set-default state=installed update_cache=true
+  - name: Set Oracle JDK8 as default with this package avail in webupd8team/java
+    apt: pkg=oracle-java8-set-default state=installed update_cache=true
     
   - name: Install screen
     apt: name=screen state=present
