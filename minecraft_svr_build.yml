@@ -1,13 +1,12 @@
 ---
 - name: Prepare the Minecraft Server!
   hosts: all
-  sudo: yes
+  become: yes
 
   tasks:
 
   - name: Update the Minecrat Server - Packages to latest version control
     apt: upgrade=dist update_cache=yes
-
    
   - name: Install oracle-java9 (test)
     apt: pkg=oracle-java9-installer state=installed update_cache=true
