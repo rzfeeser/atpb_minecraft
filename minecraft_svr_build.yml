@@ -1,5 +1,5 @@
 ---
-- name: Prepare the Minecraft Server!
+- name: Prepare the Minecraft Server with Python 2.x
   gather_facts: false
   hosts: all
   become: yes
