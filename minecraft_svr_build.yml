@@ -17,9 +17,17 @@
 
   - name: Update the Minecrat Server - Packages to latest version control
     apt: upgrade=dist update_cache=yes
+    
+  - name: Add apt_repo for java
+    apt_repository:
+      repo: ppa:webupd8team/java
+      state: present
    
-  - name: Install oracle-java9 (test)
+  - name: Install oracle-java9
     apt: pkg=oracle-java9-installer state=installed update_cache=true
+    
+  - name: Set Oracle JDK9 as default with this package avail in webupd8team/java
+    apt: pkg=oracle-java9-set-default state=installed update_cache=true
     
   - name: Install screen
     apt: name=screen state=present
