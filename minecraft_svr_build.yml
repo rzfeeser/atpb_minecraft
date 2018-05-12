@@ -49,4 +49,4 @@
 
   - name: Reboot server
     command: "/sbin/shutdown -r +1"
-    ignore_erros: true
+    ignore_errors: true
