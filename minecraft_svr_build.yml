@@ -48,6 +48,7 @@
     service: name=fail2ban state=restarted
 
   - name: Reboot server
-    command: /sbin/reboot
+    command: "/sbin/reboot"
 
-  - pause: seconds = 45
+  - name: Pause for 1 minute
+    pause: minutes=1
