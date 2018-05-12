@@ -22,13 +22,12 @@
   ## This part ensures the server is running and backed up properly
   
   ## Ensure the world is running
-  - name: pgrep will determine if java (Minecraft Server) is running
-    command: pgrep java
-    register: result
-  
-  - name: Run if no pgrep java
-    shell: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
-    when: result == ""
+    block:
+    - name: pgrep will determine if java (Minecraft Server) is running
+      command: pgrep java
+    rescue:
+    - name: Run if no pgrep java
+      shell: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
 
   ## Ensure that a backup directory exists on the Minecraft Server 
   - name: Make minecraft_backup directory
