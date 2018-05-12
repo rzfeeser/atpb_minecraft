@@ -25,6 +25,7 @@
   - block:
       - command: pgrep java
     rescue:
+      - command: "script /dev/null"
       - command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
 
   ## Ensure that a backup directory exists on the Minecraft Server 
