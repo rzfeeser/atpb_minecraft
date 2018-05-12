@@ -22,8 +22,7 @@
   ## This part ensures the server is running and backed up properly
   
   ## Ensure the world is running
-  - name: Ensure the world is running
-    block:
+  - block:
       - command: pgrep java
     rescue:
       - command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
