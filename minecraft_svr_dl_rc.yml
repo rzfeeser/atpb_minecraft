@@ -13,7 +13,7 @@
   
   ## Ensure the License Agreement is available for Minecraft Server
   - name: Get eula.txt set to true
-    get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/minecraft/eula.txt force=yes
+    get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/eula.txt force=yes
     
   ## Ensure the the latest version of Minecraft Server is present
   - name: Download minecraft (1.12.2)
