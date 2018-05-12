@@ -49,6 +49,6 @@
 
   - name: Reboot server
     command: /sbin/reboot
-    
+
   - name: Pause for restart
     pause: seconds = 45
