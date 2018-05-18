@@ -1,7 +1,7 @@
 ---
 - name: Run the minecraft server with non-root user.
   hosts: all
-  sudo: no
+  become: no
 
   tasks:
 
