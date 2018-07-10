@@ -25,7 +25,7 @@
   - block:
       - command: pgrep java
     rescue:
-      - command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
+      - command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar /home/minecraft/minecraft_server.jar nogui"
 
   ## Ensure that a backup directory exists on the Minecraft Server 
   - name: Make minecraft_backup directory
@@ -70,7 +70,7 @@
         command: pgrep java
     rescue:
       - name: No pgrep!? Start the Minecraft Server!
-        shell: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
+        shell: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar /home/minecraft/minecraft_server.jar nogui"
 
   ## Let the world know that the world has been saved!
   - name: Signal the Minecraft Sever has been backed up
