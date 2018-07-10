@@ -40,21 +40,27 @@
     
   ## Ensure that a backup directory exists on the Minecraft Server 
   - name: Make minecraft_backup directory
-    file: path=~/minecraft_backup state=directory
+    file: path=/tmp/minecraft_backup state=directory
     
-  ## Sets backupdate with the date formatted as YEARMMDD (i.e 20160105 )
-  - name: set date
-    shell: "date +%Y%m%d"
-    register: backupdate
+  - name: Compress minecraft files
+    archive:  # new post ansible 2.2, now can archive with a module (no more shell command)
+      path: ~/  # the local user's home directory only contains minecraft files
+      dest: /tmp/minecraft_backup/minecraft_backup_{{ ansible_date_time.date }}.tar.gz # create a tar (one file) gz (compressed) with the date
+      remove: no 
+    
+#  ## Sets backupdate with the date formatted as YEARMMDD (i.e 20160105 )
+#  - name: set date
+#    shell: "date +%Y%m%d"
+#    register: backupdate
   
-  ## Build the tar file max once per day & backup to NAS & delete
-  - block:
-      - name: Tar up the world with the current date
-        shell: "tar -cvf ~/minecraft_backup/minecraft_backup$(date +%Y%m%d).tar /home/minecraft/"
-    rescue: # runs only if block fails
-      - name: The task failed
-        fail:
-          msg: "**ATTENTION NEEDED** - The archive process has failed."
+#  ## Build the tar file max once per day & backup to NAS & delete
+#  - block:
+#      - name: Tar up the world with the current date
+#        shell: "tar -cvf ~/minecraft_backup/minecraft_backup$(date +%Y%m%d).tar /home/minecraft/"
+#    rescue: # runs only if block fails
+#      - name: The task failed
+#        fail:
+#          msg: "**ATTENTION NEEDED** - The archive process has failed."
   
   ## Remove the backup directory on the Minecraft Server
   - name: Move the backups
