@@ -52,8 +52,9 @@
       - name: Tar up the world with the current date
         shell: "tar -cvf ~/minecraft_backup/minecraft_backup$(date +%Y%m%d).tar /home/minecraft/"
     rescue: # runs only if block fails
-      - fail:
-        msg: "**ATTENTION NEEDED** - The archive process has failed."
+      - name: The task failed
+        fail:
+          msg: "**ATTENTION NEEDED** - The archive process has failed."
   
   ## Remove the backup directory on the Minecraft Server
   - name: Move the backups
