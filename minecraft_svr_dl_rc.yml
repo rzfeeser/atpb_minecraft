@@ -43,7 +43,7 @@
     file:
       path: /tmp/minecraft_backup # make sure /tmp/minecraft_backup directory exists
       state: directory # create a directory
-    
+
   - name: Compress minecraft files
     archive:  # new post ansible 2.2, now can archive with a module (no more shell command)
       path: ~/  # the local user's home directory only contains minecraft files
