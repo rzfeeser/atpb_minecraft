@@ -13,7 +13,7 @@
   
   ## Ensure the License Agreement is available for Minecraft Server
   - name: Get eula.txt set to true
-    get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/eula.txt force=yes
+    get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=/home/minecraft/eula.txt force=yes
     
   ## Ensure the the latest version of Minecraft Server is present
   - name: Download minecraft (1.12.2)
@@ -40,30 +40,30 @@
   
   ## STOP the Minecraft Server -- this also forces Screen to quit
   - name: Turn off the server so the tar file can be built without errors
-    command: "screen -S minecraft -X stuff '/stop \n'"  
-  
-  ## Build the tar file max once per day & backup to NAS & delete
-  - block:
-      - name: Tar up the world with the current date
-        shell: "tar -cvf ~/minecraft_backup/minecraft_backup$(date +%Y%m%d).tar /home/minecraft/"
-    rescue:
-      - name: The server needs attention
-        debug: msg="Danger! Something regarding the backup of the Minecraft Server has failed!"
-  
+    command: "screen -S minecraft -X stuff '/stop \n'"
+    
   ## Sets backupdate with the date formatted as YEARMMDD (i.e 20160105 )
   - name: set date
     shell: "date +%Y%m%d"
     register: backupdate
   
-  ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
-  ## - name: Fetch the backup
-  ##  fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=server_backup/ flat=yes
-  ##  fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=minecraft.iris.seven//tmp/ flat=yes
+  ## Build the tar file max once per day & backup to NAS & delete
+  - block:
+      - name: Tar up the world with the current date
+        shell: "tar -cvf ~/minecraft_backup/minecraft_backup$(date +%Y%m%d).tar /home/minecraft/"
+    rescue: # runs only if block fails
+      - fail:
+        msg: "**ATTENTION NEEDED** - The archive process has failed."
   
   ## Remove the backup directory on the Minecraft Server
   - name: Move the backups
     shell: "mv ~/minecraft_backup/*.* /tmp/"
-  
+
+  ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
+  ## - name: Fetch the backup
+  ##  fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=server_backup/ flat=yes
+  ##  fetch: src=~/minecraft_backup/minecraft_backup{{ backupdate.stdout }}.tar dest=minecraft.iris.seven//tmp/ flat=yes
+
   ## Ensure the world is running
   - block:
       - name: pgrep will determine if java (Minecraft Server) is running
