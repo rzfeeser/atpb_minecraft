@@ -22,9 +22,11 @@
   
   ## Ensure the world is running
   - block:
-      - command: pgrep java
+      - name: Test to see if java is running
+        command: pgrep java
     rescue:
-      - command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
+      - name: "RESCUE - start the minecraft {{ mc_version }} server"
+        command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar /home/minecraft/minecraft/minecraft_server.jar nogui"
 
   ## Tell players that the world is about to go through a backup & restart
   - name: Signal the Minecraft Sever is about to go through a save cycle, and will perform a live "safe" save.
