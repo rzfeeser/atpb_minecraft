@@ -1,4 +1,9 @@
-  ## Tell players about the Minecraft World
+---
+- name: Run the minecraft server with non-root user.
+  hosts: all  # target all minecraft servers
+  become: no  # at a play level, we do not want to run as a superuser
+
+  tasks:  ## These tell players about the Minecraft World
   - name: Announcements
     command: "screen -S minecraft -X stuff '/say Know about the following parts of the world: \n'"
     
