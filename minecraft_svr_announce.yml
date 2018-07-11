@@ -7,7 +7,7 @@
   - name: Announcements
     command: "screen -S minecraft -X stuff '/say Know about the following parts of the world: \n'"
     
-    - name: Home
+  - name: Home
     command: "screen -S minecraft -X stuff '/say Home - -121, 72, 221 \n'"
 
   - name: Village South
