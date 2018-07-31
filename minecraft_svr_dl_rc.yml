@@ -18,7 +18,7 @@
     
   ## Ensure the the latest version of Minecraft Server is present
   - name: Download minecraft ({{ mc_version }})
-    command: wget -O minecraft_server.jar https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
+    command: "wget -O minecraft_server.jar https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar" chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
   
   ## Ensure the world is running
   - block:
