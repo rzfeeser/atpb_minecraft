@@ -71,11 +71,11 @@
 #    shell: "mv ~/minecraft_backup/*.* /tmp/"
 
 #  ## This will retrieve the backup, and move it to dest on the Ansible Tower (which should be NFS mounted storage)
-  - name: Fetch the backup
-    fetch: # pulls a file from host back to the controller
-      src=/tmp/minecraft_backup/minecraft_backup_{{ ansible_date_time.date }}.tar.gz
-      dest=/server_backup/  # dest is the location on the ansible controller
-      flat=yes
+#  - name: Fetch the backup
+#    fetch: # pulls a file from host back to the controller
+#      src=/tmp/minecraft_backup/minecraft_backup_{{ ansible_date_time.date }}.tar.gz
+#      dest=/server_backup/  # dest is the location on the ansible controller
+#      flat=yes
       
   
 
