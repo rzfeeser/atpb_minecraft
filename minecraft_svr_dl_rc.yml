@@ -4,7 +4,7 @@
   become: no  # at a play level, we do not want to run as a superuser
 
   vars:
-  - mc_version: "1.12.2" ## map to the version of minecraft server to download
+  - mc_version: "1.13" ## map to the version of minecraft server to download
 
   tasks:
 
@@ -18,7 +18,7 @@
     
   ## Ensure the the latest version of Minecraft Server is present
   - name: Download minecraft ({{ mc_version }})
-    command: wget -O minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/{{ mc_version }}/minecraft_server.{{ mc_version }}.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
+    command: wget -O minecraft_server.jar https://launcher.mojang.com/mc/game/1.13/server/d0caafb8438ebd206f99930cfaecfa6c9a13dca0/server.jar chdir=~/minecraft creates=~/minecraft/minecraft_server.jar
   
   ## Ensure the world is running
   - block:
