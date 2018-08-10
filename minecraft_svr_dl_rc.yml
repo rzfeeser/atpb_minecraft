@@ -26,7 +26,7 @@
       - name: Test to see if java is running
         command: pgrep java
         register: iamrun
-        ignore_erros: yes
+        ignore_errors: True
 #    rescue:
       - name: "Start the minecraft {{ mc_version }} server if needed"
         command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
