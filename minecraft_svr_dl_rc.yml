@@ -27,7 +27,7 @@
         register: amirun
       - name: debug varz
         debug:
-        msg: "{{ amirun }}"
+          msg: "The value of amirun is {{ amirun }}"
     rescue:
       - name: "RESCUE - start the minecraft {{ mc_version }} server"
         command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
