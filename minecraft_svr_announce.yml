@@ -12,3 +12,6 @@
 
   - name: Village South
     command: "screen -S minecraft -X stuff '/say Village South - 1262, 67, 2142 \n'"
+    
+  - name: New location
+    command: "New place is at XYZ"
