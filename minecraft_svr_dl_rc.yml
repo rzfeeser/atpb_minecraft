@@ -16,9 +16,13 @@
   - name: Get eula.txt set to true
     get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/minecraft/eula.txt force=yes
     
+#  ## Ensure the the latest version of Minecraft Server is present
+#  - name: Download minecraft ({{ mc_version }})
+#    command: wget -O minecraft_server.jar {{mc_version}}
+    
   ## Ensure the the latest version of Minecraft Server is present
   - name: Download minecraft ({{ mc_version }})
-    command: wget -O minecraft_server.jar {{mc_version}}
+    get_url: url={{mc_version}} dest=~/minecraft_server.jar
   
   ## Ensure the world is running
   - name: Ensure the world is running
