@@ -32,6 +32,10 @@
         command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
         when: iamrun.rc != 0
 
+  ## Pause for 1 minute so players can disconnect from the game
+  - name: Pause for 1 minute
+    pause: seconds=30
+
   ## Tell players that the world is about to go through a backup & restart
   - name: Signal the Minecraft Sever is about to go through a save cycle, and will perform a live "safe" save.
     command: "screen -S minecraft -X stuff 'say The world shall be made safe for another day. To do so. We must momentarily hault the world. Sever restart in 1 minute. \n /save-off \n /save-all \n /save-on \n'"
