@@ -29,7 +29,7 @@
         ignore_errors: True
 #    rescue:
       - name: "Start the minecraft {{ mc_version }} server if needed"
-        command: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
+        command: "screen -S minecraft -d -m java -Xmx1024M -Xms1024M -jar ~/minecraft_server.jar nogui"
         when: iamrun.rc != 0
 
   ## Pause for 1 minute so players can disconnect from the game
