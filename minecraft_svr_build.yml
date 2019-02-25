@@ -14,21 +14,13 @@
   become: yes
   
   tasks:
-    
-  - name: Add apt_repo for java
-    apt_repository:
-     repo: ppa:webupd8team/java
-     state: present
 
   - name: Update the Minecrat Server - Packages to latest version control
     apt: upgrade=dist update_cache=yes
    
-  ##  - name: Install oracle-java8
-  ##    shell: "apt install oracle-java8-installer -y"
-    
-  ##  - name: Set Oracle JDK8 as default with this package avail in webupd8team/java
-  ##    shell: "apt install oracle-java8-set-default -y"
-    
+  - name: Install java
+    apt: name=default-jre state=present
+
   - name: Install screen
     apt: name=screen state=present
     
