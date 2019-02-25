@@ -1,14 +1,14 @@
 ---
-#- name: Prepare the Minecraft Server with Python 2.x
-#  gather_facts: false
-#  hosts: all
-#  become: yes # this runs as sudo
-#  
-#  tasks:
-#
-#  - name: install python
-#    raw: sudo apt install python -y
-#
+- name: Prepare the Minecraft Server with Python 2.x
+  gather_facts: false
+  hosts: all
+  become: yes # this runs as sudo
+  
+  tasks:
+
+  - name: install python
+    raw: sudo apt install python3 -y
+
 - name: Prepare the Minecraft Server!
   hosts: all
   become: yes
