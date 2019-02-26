@@ -9,7 +9,7 @@
 
   vars:
   - mc_version: "https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar" ## map to the version of minecraft server to download
-  - mc_version_str: "1.12"
+  - mc_version_str: "1.13.2"
 
   tasks:
 
