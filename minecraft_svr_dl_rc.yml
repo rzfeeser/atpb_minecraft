@@ -36,7 +36,7 @@
         shell: "screen -S minecraft -d -m java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"
         when: iamrun.rc != 0
 
-  ## Pause for 1 minute so players can disconnect from the game
+  ## Pause for 1 minute for game to boot
   - name: Pause for 1 minute
     pause: minutes=1
 
@@ -99,7 +99,7 @@
         command: pgrep java
     rescue:
       - name: No pgrep!? Start the Minecraft Server!
-        shell: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft/minecraft_server.jar nogui"
+        shell: "screen -dmS minecraft java -Xmx1024M -Xms1024M -jar ~/minecraft_server.jar nogui"
 
   ## Let the world know that the world has been saved!
   - name: Signal the Minecraft Sever has been backed up
