@@ -1,6 +1,8 @@
 ---
-## this should be run as a user 'minecraft' with limited priv
-## do not run as super user
+## author: RZFeeser
+## reference: https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server
+## notes: this should be run as a user 'minecraft' with limited priv
+##        do not run as super user
 - name: Run the minecraft server with non-root user.
   hosts: all  # target all minecraft servers
   become: no  # at a play level, we do not want to run as a superuser
