@@ -21,10 +21,6 @@
   - name: Get eula.txt set to true
     get_url: url=https://raw.githubusercontent.com/rzfeeser/atpb_minecraft/master/eula.txt dest=~/eula.txt force=yes
     
-#  ## Ensure the the latest version of Minecraft Server is present
-#  - name: Download minecraft ({{ mc_version }})
-#    command: wget -O minecraft_server.jar {{mc_version}}
-    
   ## Ensure the the latest version of Minecraft Server is present
   - name: Download minecraft ({{ mc_version_str }})
     get_url: url={{mc_version}} dest=~/minecraft_server.jar
@@ -36,7 +32,7 @@
         command: pgrep java
         register: iamrun
         ignore_errors: True
-#    rescue:
+
       - name: "Start the minecraft {{ mc_version_str }} server if needed"
         shell: "screen -S minecraft -d -m java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"
         when: iamrun.rc != 0
