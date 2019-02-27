@@ -1,6 +1,6 @@
 ---
 ## author: RZFeeser
-## reference: https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server
+## DL Server here --> https://minecraft.net/en-us/download/server/
 ## notes: this should be run as a user 'minecraft' with limited priv
 ##        do not run as super user
 - name: Run the minecraft server with non-root user.
