@@ -13,3 +13,4 @@ It is likely that this repository will be riddled with errors for the near futur
 Helpful Links:
   - Setting Up A Server: https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server
   - Download Minecraft Server Software: https://minecraft.net/en-us/download/server/
+  - Ubuntu Server OS: https://www.ubuntu.com/download/server
