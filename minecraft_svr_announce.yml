@@ -13,8 +13,8 @@
   - name: Village South
     command: "screen -S minecraft -X stuff '/say Village South - 1262, 67, 2142 \n'"
   
-  - name: Mega Village
-    command: "screen -S minecraft -X stuff '/say Village South - 684, 63, 340 \n'" 
+  - name: New Mega Village
+    command: "screen -S minecraft -X stuff '/say New Mega Village - 684, 63, 340 \n'" 
   
   - name: New location
     command: "New place is at XYZ"
