@@ -16,28 +16,46 @@
   tasks:
 
   - name: Update the Minecrat Server - Packages to latest version control
-    apt: upgrade=dist update_cache=yes
+    apt:
+      upgrade: dist
+      update_cache: yes
    
   - name: Install java
-    apt: name=default-jre state=present
+    apt:
+      name: default-jre
+      state: present
 
   - name: Install screen
-    apt: name=screen state=present
+    apt:
+      name: screen
+      state: present
     
   - name: Install git
-    apt: name=git state=present
+    apt:
+      name: git
+      state: present
     
   - name: Install fail2ban
-    apt: name=fail2ban state=present
+    apt:
+      name: fail2ban
+      state: present
 
   - name: Copy fail2ban
-    copy: src=/etc/fail2ban/jail.conf dest=/etc/fail2ban/jail.local remote_src=true
+    copy:
+      src: /etc/fail2ban/jail.conf
+      dest: /etc/fail2ban/jail.local
+      remote_src: true
 
   - name: Update fail2ban policy
-    lineinfile: dest=/etc/fail2ban/jail.local regexp="^bantime  = 600$" line="bantime  = 20000"
+    lineinfile:
+      dest: /etc/fail2ban/jail.local
+      regexp: "^bantime  = 600$"
+      line: "bantime  = 20000"
     
   - name: Restart fail2ban
-    service: name=fail2ban state=restarted
+    service:
+      name: fail2ban
+      state: restarted
 
   - name: Reboot server
     command: "/sbin/shutdown -r +1"
