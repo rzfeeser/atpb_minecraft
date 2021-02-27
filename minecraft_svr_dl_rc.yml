@@ -28,9 +28,9 @@
       force: yes
     
   ## Ensure the the latest version of Minecraft Server is present
-  - name: Download minecraft ({{ mc_version_str }})
+  - name: "Download minecraft ( {{ mc_version_str }} )"
     get_url:
-      url: {{mc_version}}
+      url: "{{ mc_version }}"
       dest: ~/minecraft_server.jar
   
   ## Ensure the world is running
