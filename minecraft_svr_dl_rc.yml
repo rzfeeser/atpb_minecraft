@@ -30,6 +30,7 @@
   ## Ensure the the latest version of Minecraft Server is present
   - name: "Download minecraft ( {{ mc_version_str }} )"
     get_url:
+      force: yes
       url: "{{ mc_version }}"
       dest: ~/minecraft_server.jar
   
