@@ -1,0 +1,4 @@
+---
+# examples of values that should be mapped to vars
+mc_version: "https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar" ## map to the version of minecraft server to download
+mc_version_str: "1.16.5"

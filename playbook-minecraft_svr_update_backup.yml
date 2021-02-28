@@ -1,0 +1,18 @@
+---
+## author: RZFeeser
+## DL Server here --> https://minecraft.net/en-us/download/server/
+## notes: this should be run as a user 'minecraft' with limited priv
+##        do not run as super user
+- name: Run the minecraft server with non-root user.
+  hosts: all  # target all minecraft servers
+  connection: ssh
+  gather_facts: yes
+  become: no  # at a play level, we do not want to run as a superuser
+
+  vars:
+  # below is the link and current ver of MC server software ++
+  - mc_version: "https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar" ## map to the version of minecraft server to download
+  - mc_version_str: "1.16.5"
+
+  roles:
+    - minecraft_svr_update_backup
