@@ -12,7 +12,7 @@ Updates in ver 0.2:
   - These solutions are tested for use on `Ubuntu 18.04`
 
 ### Helpful Links
+  - Offical Release of Minecraft Sever App: https://minecraft.net/en-us/download/server/
   - Setting Up A Server: https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server
   - Download Minecraft Server Software: https://minecraft.net/en-us/download/server/
   - Ubuntu Server OS: https://www.ubuntu.com/download/server
-  - Offical Link to Server Software: https://minecraft.net/en-us/download/server/
