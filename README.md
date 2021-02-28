@@ -2,9 +2,8 @@
 
 ### Project Status: Stable
 Updates in ver 0.2:
-	- `minecraft_svr_announce.yml` has been retired and is now a role titled `role/minecraft_svr_announce/`. An example of using this solution is found within `playbook-minecraft_svr_announce.yml`
-	- `minecraft_svr_build.yml` has been retired and is now a role titled `role/minecraft_svr_prep/`. An example of using this solution is found within `playbook-minecraft_svr_prep.yml`. The justification for the name change was that `minecraft_svr_build.yml` was a misleading name.
-	- 
+  - `minecraft_svr_announce.yml` has been retired and is now a role titled `role/minecraft_svr_announce/`. An example of using this solution is found within `playbook-minecraft_svr_announce.yml`
+  - `minecraft_svr_build.yml` has been retired and is now a role titled `role/minecraft_svr_prep/`. An example of using this solution is found within `playbook-minecraft_svr_prep.yml`. The justification for the name change was that `minecraft_svr_build.yml` was a misleading name.
 
 ### Description
   - Repository contains Ansible code
