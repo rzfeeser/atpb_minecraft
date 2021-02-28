@@ -1,0 +1,16 @@
+---
+- name: Make Minecraft server announcements 
+  hosts: all
+  connection: ssh
+  become: no
+  gather_facts: no
+  
+  vars:
+    locations:
+      - "Home - -121, 72, 221"
+      - "Village South - 1262, 67, 2142"
+      - "New Mega Village - 684, 63, 340"
+      - "Let Feezy know if you find a location want announced"
+  
+  roles:
+      - minecraft_svr_announce

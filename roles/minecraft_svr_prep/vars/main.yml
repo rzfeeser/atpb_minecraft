@@ -1,0 +1,6 @@
+---
+aptpackages:
+  - default-jre
+  - screen
+  - git
+  - fail2ban

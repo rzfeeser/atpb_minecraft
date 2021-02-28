@@ -1,0 +1,9 @@
+---
+- name: Announce Announcements
+  command: "screen -S minecraft -X stuff '/say Know about the following parts of the world: \n'"
+
+- name: Loop across notable locations within the Minecraft World
+  command: "screen -S minecraft -X stuff '/say {{ item }} \n'"
+  loop: "{{ locations }}"
+  loop_control:
+    pause: 3
