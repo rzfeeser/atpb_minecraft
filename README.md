@@ -1,9 +1,10 @@
-## Ansible / Ansible Tower - Minecraft Server Play Books
+## Ansible / Ansible Tower - Minecraft Server Roles
 
 ### Project Status: Stable
 Updates in ver 0.2:
   - `minecraft_svr_announce.yml` has been retired and is now a role titled `role/minecraft_svr_announce/`. An example of using this solution is found within `playbook-minecraft_svr_announce.yml`
   - `minecraft_svr_build.yml` has been retired and is now a role titled `role/minecraft_svr_prep/`. An example of using this solution is found within `playbook-minecraft_svr_prep.yml`. The justification for the name change was that `minecraft_svr_build.yml` was a misleading name.
+  - `minecraft_svr_dl_rc.yml` has been retired and is now a rile titled `role/minecraft_svr_update_backup/`. An example of using this solution is found within `playbook-minecraft_svr_update_backup.yml`. The justification for the name change was that `minecraft_svr_dl_rc.yml` was a misleading name.
 
 ### Description
   - Repository contains Ansible code
