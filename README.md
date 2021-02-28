@@ -15,3 +15,4 @@ Updates in ver 0.2:
   - Setting Up A Server: https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server
   - Download Minecraft Server Software: https://minecraft.net/en-us/download/server/
   - Ubuntu Server OS: https://www.ubuntu.com/download/server
+  - Offical Link to Server Software: https://minecraft.net/en-us/download/server/
