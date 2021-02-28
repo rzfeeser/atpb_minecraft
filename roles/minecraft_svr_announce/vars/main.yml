@@ -1,0 +1,7 @@
+---
+# below is an example of how locations should be mapped
+# rather than re
+locations:
+    - "Home - -121, 72, 221"
+    - "Village South - 1262, 67, 2142"
+    - "New Mega Village - 684, 63, 340"

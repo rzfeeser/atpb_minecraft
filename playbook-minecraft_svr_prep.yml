@@ -1,0 +1,16 @@
+---
+- name: Prepare the Minecraft Server & Compliance Maintenance
+  hosts: all
+  connection: ssh
+  gather_facts: yes
+  become: yes
+  
+  vars:
+    aptpackages:
+      - default-jre
+      - screen
+      - git
+      - fail2ban
+  
+  roles:
+    - minecraft_svr_prep

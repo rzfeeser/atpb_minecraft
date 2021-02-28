@@ -1,16 +1,17 @@
-## Ansible Tower Minecraft Server Play Books
-##### Project Status: 3UPA (Uber Unstable & Ultra Pre-Alpha)
-##### My goal is to use a combination of Ansible Tower, GitHub, and an Ubuntu 14.04 snapshot to teach myself how to:
-  - Control Ansible Tower
-  - Write YAML syntax
-  - Write Ansible Plays
-  - Create a fully functional Minecraft Server using only DevOps processes
-  - Improve my ability to control Git & GitHub
-  - Continue to practice Linux system admin skills
+## Ansible / Ansible Tower - Minecraft Server Play Books
 
-It is likely that this repository will be riddled with errors for the near future. However, I certainly welcome the input and assistance of others to improve the overall best-practices and functionality.
+### Project Status: Stable
+Updates in ver 0.2:
+	- `minecraft_svr_announce.yml` has been retired and is now a role titled `role/minecraft_svr_announce/`. An example of using this solution is found within `playbook-minecraft_svr_announce.yml`
+	- `minecraft_svr_build.yml` has been retired and is now a role titled `role/minecraft_svr_prep/`. An example of using this solution is found within `playbook-minecraft_svr_prep.yml`. The justification for the name change was that `minecraft_svr_build.yml` was a misleading name.
+	- 
 
-Helpful Links:
+### Description
+  - Repository contains Ansible code
+  - The files `playbook-minecraft_*` contain examples of how to use the code within `roles/` 
+  - These solutions are tested for use on `Ubuntu 18.04`
+
+### Helpful Links
   - Setting Up A Server: https://minecraft.gamepedia.com/Tutorials/Setting_up_a_server
   - Download Minecraft Server Software: https://minecraft.net/en-us/download/server/
   - Ubuntu Server OS: https://www.ubuntu.com/download/server

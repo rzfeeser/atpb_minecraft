@@ -1,0 +1,34 @@
+---
+- name: install python with raw
+  raw: "which python3"
+  register: results
+  changed_when: false
+  
+- debug:
+    var: results.get("stdout")
+    verbosity: 1
+
+- name: install python with raw
+  raw: "python3 -m pip install python3-pip"
+  when: '"python3" not in results.get("stdout")'
+
+- name: install asterisk with apt
+  apt:
+      name: "{{ aptpackages }}"
+      update_cache: yes
+      upgrade: dist
+      state: present
+
+- name: Copy fail2ban
+  copy:
+    src: /etc/fail2ban/jail.conf
+    dest: /etc/fail2ban/jail.local
+    remote_src: true
+  notify: restart fail2ban
+
+- name: Update fail2ban policy
+  lineinfile:
+    dest: /etc/fail2ban/jail.local
+    regexp: "^bantime  = 600$"
+    line: "bantime  = 20000"
+  notify: restart fail2ban
