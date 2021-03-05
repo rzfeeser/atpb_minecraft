@@ -10,6 +10,9 @@ Updates in ver 0.2:
   - Repository contains Ansible code
   - The files `playbook-minecraft_*` contain examples of how to use the code within `roles/` 
   - These solutions are tested for use on `Ubuntu 18.04`
+  - To run locally, first install python `sudo apt install python3-pip`
+  - Next install ansible, `python3 -m pip install ansible`
+  - Now run all of the above solutions against the `host: localhost` and `connection: local`
 
 ### Helpful Links
   - Offical Release of Minecraft Sever App: https://minecraft.net/en-us/download/server/
